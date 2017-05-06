@@ -27,7 +27,4 @@ published: false
 如果str不为空，则同样会根据当前value的长度和当前value长度加上str的长度决定是否对字符数组进行扩容，之后会通str.getChars(0, len, value, count)把str字符串拷贝到vaule字符数组。
 
 ## 效率
-在分别对String，StringBuilder，StringBuffer进行10000条数据的拼接测试中，发现String需要500ms左右，而StringBuffer，StringBuilder基本在5ms内，其中，StringBuilder要相对快一些，具体测试[代码链接](https://github.com/LutoTargaryen/StringAbout.git)
-
-
-
+在分别对String，StringBuilder，StringBuffer进行10000条数据的拼接测试中，发现String需要500ms左右，而StringBuffer，StringBuilder基本在5ms内，其中，StringBuilder要相对快1-3ms左右（具体速度应该和设备有关），具体测试[代码链接](https://github.com/LutoTargaryen/StringAbout.git)
