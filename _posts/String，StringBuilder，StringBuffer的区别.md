@@ -16,7 +16,18 @@ published: false
 ##StringBuffer中的append方法
 -该方法会在StringBuffer结尾出插入字符串，并返回更改后的StringBuffer对象
 
--
+-1.该方法重写了父类的append方法，在该方法中首先会清空toStringCache缓存
+![tappend.PNG]({{site.baseurl}}/_posts/tappend.PNG)
+
+-2.之后会调用父类的append（String str）方法
+![sappend.PNG]({{site.baseurl}}/_posts/sappend.PNG)
+在该方法中，如果str为null，则会根据当前value的长度决定是否对字符数组进行扩容（具体方法是ensureCapacityInternal(int minimumCapacity)），在StringBuffer对象后添加“null”，并将长度增长4，
+![]({{site.baseurl}}/_posts/strnull.PNG)
+
+如果str不为空，则同样会根据当前value的长度和当前value长度加上str的长度决定是否对字符数组进行扩容，之后会通str.getChars(0, len, value, count)把str字符串拷贝到vaule字符数组。
+
+## 效率
+在分别对String，StringBuilder，StringBuffer进行10000条数据的拼接测试中，发现String需要500ms左右，而StringBuffer，StringBuilder基本在5ms内，其中，StringBuilder要相对快一些，具体测试[代码链接](https://github.com/LutoTargaryen/StringAbout.git)
 
 
 
