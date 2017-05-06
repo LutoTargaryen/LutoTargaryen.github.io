@@ -9,8 +9,8 @@ published: false
 
 ##资源消耗
 
--在创建一个StringBuffer的时候（以new StringBuffer（“str”））为例，在StringBuffer的构造器内，![str.PNG]({{site.baseurl}}/_posts/str.PNG)
-首先会调用父类（AbstractStringBuilder）的构造方法AbstractStringBuilder(int capacity)，这个参数是“str”的长度（）
+-在创建一个StringBuffer的时候（以new StringBuffer（“str”））为例，在StringBuffer的构造器StringBuffer(String str)内，![]({{site.baseurl}}/_posts/str.PNG)
+首先会调用父类（AbstractStringBuilder）的构造方法AbstractStringBuilder(int capacity)，这个capacity参数是str的长度（通过str.length()获取，而length（）方法内部通过返回char数组的length实现）+16（话说，如果是StringBuffer的无参构造器内也会创建一个长度为16的char[],为啥会这样，我暂时还不知道），而AbstractStringBuilder（）构造器会将AbstractStringBuilder类中的char[]数组初始化为一个capacity长度的数组；之后StringBuffer构造器会调用StringBuffer类中的append(String str)方法
 
 
 
